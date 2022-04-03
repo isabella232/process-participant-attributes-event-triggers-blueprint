@@ -1,4 +1,4 @@
-# process-participant-attributes-event-triggers-blueprint(DRAFT)
+# Process Participant Attributes using Event Triggers(DRAFT)
 
 This Genesys Cloud Developer Blueprint demonstrates how to save participant attributes to a third-party database through the use of event triggers.
 
