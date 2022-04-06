@@ -6,21 +6,14 @@ icon: blueprint
 image: images/flowchart.png
 category: 6
 summary: |
-  This Genesys Cloud Developer Blueprint demonstrates how to take advantage of the new process trigger feature to opimize your call flows. This solution utilizes process triggers to execute a workflow whenever a call disconnects in your organization. The workflow then process participant data stored during the call.
+  This Genesys Cloud Developer Blueprint demonstrates how to take advantage of the new process trigger feature to optimize your call flows. This solution utilizes process triggers to execute a workflow whenever a call disconnects in your organization. The workflow then process participant data stored during the call.
 ---
+
+![Event Orchestration flowchart](images/flowchart.png "Deploy a Process Automation Triggers setup")
 
 **NOTE:** `Process Automation Triggers` is currently in beta. To gain access to this feature you should contact your CSM/TAM or reach out to Richard Schott at richard.schott@genesys.com. Please make sure you have required access before proceeding with the blueprint.
 
-This Genesys Cloud Developer Blueprint demonstrates how to save participant attributes to a third-party database through the use of event triggers. The infrastucture is deployed using using Terraform, CX as Code, and Archy. The third-paty databse used in this blue print is Amazon's s3 bucket. In the proess of deploying the infrastructure, Terraform will deploy all the required AWS resources, genesys cloud resources, architect flows, and finally, run a python script to create a process trigger which is very imperative in this system. The process trigger enables you to define events or conditons that will enable your workflow to be executed in response to defined events(which are disconnected calls in this case).
-
-![Event Orchestration flowcart](images/flowchart.png "Deploy a Process Automation Triggers setup")
-
-## Contents
-
-- [Solution components](#solution-components "Goes to the Solutions components section")
-- [Prerequisites](#prerequisites "Goes to the Prerequisites section")
-- [Implementation steps](#implementation-steps "Goes to the Implementation steps section")
-- [Additional resources](#additional-resources "Goes to the Additional resources section")
+This Genesys Cloud Developer Blueprint demonstrates how to save participant attributes to a third-party database through the use of event triggers. The infrastructure is deployed using using Terraform, CX as Code, and Archy. The third-party database used in this blue print is Amazon's s3 bucket. In the process of deploying the infrastructure, Terraform will deploy all the required AWS resources, Genesys cloud resources, architect flows, and finally, run a python script to create a process trigger which is very imperative in this system. The process trigger enables you to define events or conditions that will enable your workflow to be executed in response to defined events(which are disconnected calls in this case).
 
 ## Solution components
 
@@ -106,7 +99,7 @@ For more information, see [Create an OAuth client](https://help.mypurecloud.com/
 
 ### Define Terraform variables
 
-In the `terraform` directory, open the `variables.auto.tfvars` and edit the variables to match your prefered configuration.
+In the `terraform` directory, open the `variables.auto.tfvars` and edit the variables to match your preferred configuration.
 
 - `environment` : This a free-form field that will be combined with the prefix value to define the name of various AWS and Genesys Cloud artifacts. For example, if you set the environment name to be `dev` and a lambda prefix to be `saveDataLambda` your AWS Lambda, IAM roles(relating to the lambda), Genesys Cloud Integration and Data Actions will all begin with `dev-saveDataLambda`.
 - `organizationId` : Your Genesys Cloud organization id.
@@ -131,7 +124,7 @@ terraform init
 terraform apply --auto-approve
 ```
 
-This should create and deploy the infrastructure. This includes 3 flows(an inbound call flow, a secure flow and a worflow), two lambdas(including the roles and policies that comes with it), data integrations, and data actions for the lambdas. After everything is set up, a python script, located in `blueprint/terraform/workflow_trigger` gets called with the id of the workflow. This is a crucial part of the infrastructure because the script subscribes(with your `workflowId`) to a Notifaction topic that allows the workflow to be called when a call disconnects in your system.
+This should create and deploy the infrastructure. This includes 3 flows(an inbound call flow, a secure flow and a workflow), two lambdas(including the roles and policies that comes with it), data integrations, and data actions for the lambdas. After everything is set up, a python script, located in `blueprint/terraform/workflow_trigger` gets called with the id of the workflow. This is a crucial part of the infrastructure because the script subscribes(with your `workflowId`) to a Notifaction topic that allows the workflow to be called when a call disconnects in your system.
 
 ### Building Golang Lambda
 
