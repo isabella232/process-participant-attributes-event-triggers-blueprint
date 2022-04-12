@@ -14,16 +14,18 @@ summary: |
 :::primary:**NOTE**: `Process Automation Triggers` is currently in beta. Please ensure you have the required access before proceeding. To gain access to this feature you should contact your CSM/TAM or reach out to Richard Schott at richard.schott@genesys.com.
 :::
 
-This Genesys Cloud Developer Blueprint demonstrates how to save participant attributes to a third-party database through event triggers. The third-party database used in this blueprint is Amazon's s3 bucket. The infrastructure is deployed using Terraform, CX as Code, and Archy. Terraform will deploy all the required AWS resources, Genesys cloud resources, architect flows, and run a python script to create a process trigger, imperative in this system. The process trigger enables you to define events or conditions that will allow your workflow to be executed in response to defined events (disconnected calls in this case).
+## Scenario
+
+This Genesys Cloud Developer Blueprint demonstrates how to save participant attributes to a third-party database through event triggers. The third-party database used in this blueprint is Amazon's s3 bucket. The infrastructure is deployed using Terraform, CX as Code, and Archy. Terraform will deploy all the required AWS resources, Genesys cloud resources, architect flows, and run a python script to create a process trigger, which is imperative in this system. The process trigger enables you to define events or conditions that will allow your workflow to be executed in response to defined events (disconnected calls in this case).
 
 ## Solution components
 
-- **[Genesys Cloud](https://www.genesys.com/genesys-cloud "Opens the Genesys Cloud website")** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. You create and manage OAuth clients in Genesys Cloud.
-- **[Welcome to Archy](https://developer.genesys.cloud/devapps/archy/ "Opens the Welcome to Archy website")** - A Genesys Cloud Architect YAML processor that lets you create Architect flows from YAML files that you write.
-- **[Terraform](https://www.terraform.io/ "Opens the Terraform website")** - An open-source infrastructure as a code software tool that provides a consistent Command Line Interface (CLI) workflow to manage hundreds of cloud services
+- **[Genesys Cloud CX](https://www.genesys.com/genesys-cloud "Opens the Genesys Cloud website")** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. You create and manage OAuth clients in Genesys Cloud.
+- **[Welcome to Archy](https://developer.genesys.cloud/devapps/archy/ "Opens the Welcome to Archy website")** - A Genesys Cloud command-line tool for building and managing Architect flows.
+- **[Terraform](https://www.terraform.io/ "Opens the Terraform website")** - An open-source framework for managing cloud- and prem-based infrastructure services via a CLI.
 - **[CX as Code](https://developer.genesys.cloud/api/rest/CX-as-Code/ "Opens the CX as Code website")** - A Genesys Cloud Terraform provider that provides a command-line interface for declaring core Genesys Cloud objects.
 - **[AWS Lambda](https://aws.amazon.com/lambda/ "Opens the AWS Lambda website")** - A serverless computing service for running code without creating or maintaining the underlying infrastructure.
-- **[AWS S3](https://aws.amazon.com/s3/ "Opens the AWS S3 website")** - An object storage service offering industry-leading scalability, data availability, security, and performance.
+- **[AWS S3](https://aws.amazon.com/s3/ "Opens the AWS S3 website")** - Simple Storage Service, an object storage service in AWS.
 - **[Python](https://www.python.org/ "Opens the Python website")** - An interpreted, high-level programming language that is used to quickly build modularized, object-oriented programs.
 - **[Golang](https://go.dev/ "Opens Golang website")** - syntactically similar to C, Go is a statically typed, compiled programming language designed at Google.
 
@@ -141,7 +143,7 @@ Dial the phone number you entered in the `blueprint/src/terraform/variables.auto
 
 ## Additional resources
 
-- [Genesys Cloud Provider](https://registry.terraform.io/providers/MyPureCloud/genesyscloud/latest/docs) on Terraform website.
-- [AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) on Terraform.
-- [Deploy a simple IVR using Terraform, CX as Code, and Archy](/blueprints/simple-ivr-deploy-with-cx-as-code-blueprint/ "Goes Deploy a simple IVR using Terraform, CX as Code, and Archy blueprint") in the Genesys Cloud Developer Center.
-- [process-participant-attributes-event-triggers-blueprint](https://github.com/GenesysCloudBlueprints/process-participant-attributes-event-triggers-blueprint) in Github.
+- [Genesys Cloud Provider](https://registry.terraform.io/providers/MyPureCloud/genesyscloud/latest/docs "Goes to the Genesys Cloud provider page") on the Terraform website.
+- [AWS Provider Documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs "Go to the AWS provider documentation page") on the Terraform website.
+- [Deploy a simple IVR using Terraform, CX as Code, and Archy](/blueprints/simple-ivr-deploy-with-cx-as-code-blueprint/ "Goes to Deploy a simple IVR using Terraform, CX as Code, and Archy blueprint") in the Genesys Cloud Developer Center.
+- [process-participant-attributes-event-triggers-blueprint](https://github.com/GenesysCloudBlueprints/process-participant-attributes-event-triggers-blueprint "Goes to the Process participant attributes event triggers blueprint") in Github.
