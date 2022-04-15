@@ -1,5 +1,5 @@
 # Process Participant Attributes using Event Triggers(DRAFT)
 
-This Genesys Cloud Developer Blueprint demonstrates how to save participant attributes to a third-party database through the use of event triggers.
+This Genesys Cloud Developer blueprint demonstrates how to optimize call flows using the new trigger feature to execute a workflow whenever a call disconnects in your organization. The workflow then processes the participant data stored during the call.
 
-![Event Orchestration flowchart](/blueprint/images/flowchart.png "Process Automation Triggers flowchart")
+![Deploy a Process Automation Triggers setup](blueprint/images/flowchart.png "Deploy a Process Automation Triggers setup")
