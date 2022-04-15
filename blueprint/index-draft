@@ -6,28 +6,30 @@ icon: blueprint
 image: images/flowchart.png
 category: 6
 summary: |
-  This Genesys Cloud Developer Blueprint demonstrates how to optimize your call flows by taking advantage of the new process trigger feature. This solution uses process triggers to execute a workflow whenever a call disconnects in your organization. The workflow then processes participant data stored during the call.
+This Genesys Cloud Developer blueprint demonstrates how to optimize call flows using the new trigger feature to execute a workflow whenever a call disconnects in your organization. The workflow then processes the participant data stored during the call.
 ---
 
-![Event Orchestration flowchart](images/flowchart.png "Deploy a Process Automation Triggers setup")
+This Genesys Cloud Developer blueprint demonstrates how to optimize call flows using the new trigger feature to execute a workflow whenever a call disconnects in your organization. The workflow then processes the participant data stored during the call.
+
+![Deploy a Process Automation Triggers setup](images/flowchart.png "Deploy a Process Automation Triggers setup")
 
 :::primary:**NOTE**: `Process Automation Triggers` is currently in beta. Please ensure you have the required access before proceeding. To gain access to this feature you should contact your CSM/TAM or reach out to Richard Schott at richard.schott@genesys.com.
 :::
 
 ## Scenario
 
-This Genesys Cloud Developer Blueprint demonstrates how to save participant attributes to a third-party database through event triggers. The third-party database used in this blueprint is Amazon's s3 bucket. The infrastructure is deployed using Terraform, CX as Code, and Archy. Terraform will deploy all the required AWS resources, Genesys cloud resources, architect flows, and run a python script to create a process trigger, which is imperative in this system. The process trigger enables you to define events or conditions that will allow your workflow to be executed in response to defined events (disconnected calls in this case).
+This Genesys Cloud Developer blueprint demonstrates how to save participant attributes through event triggers using Amazon's s3 bucket as the third-party database. The infrastructure is deployed using Terraform, CX as Code, and Archy. Terraform deploys the required AWS resources, Genesys cloud resources, architect flows and runs a python script to create a process trigger, imperative in this system. The process trigger defines events or conditions that allow your workflow to be executed in response to defined events (disconnected calls in this case).
 
 ## Solution components
 
-- **[Genesys Cloud CX](https://www.genesys.com/genesys-cloud "Opens the Genesys Cloud website")** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. You create and manage OAuth clients in Genesys Cloud.
-- **[Welcome to Archy](https://developer.genesys.cloud/devapps/archy/ "Opens the Welcome to Archy website")** - A Genesys Cloud command-line tool for building and managing Architect flows.
-- **[Terraform](https://www.terraform.io/ "Opens the Terraform website")** - An open-source framework for managing cloud- and prem-based infrastructure services via a CLI.
-- **[CX as Code](https://developer.genesys.cloud/api/rest/CX-as-Code/ "Opens the CX as Code website")** - A Genesys Cloud Terraform provider that provides a command-line interface for declaring core Genesys Cloud objects.
-- **[AWS Lambda](https://aws.amazon.com/lambda/ "Opens the AWS Lambda website")** - A serverless computing service for running code without creating or maintaining the underlying infrastructure.
-- **[AWS S3](https://aws.amazon.com/s3/ "Opens the AWS S3 website")** - Simple Storage Service, an object storage service in AWS.
-- **[Python](https://www.python.org/ "Opens the Python website")** - An interpreted, high-level programming language that is used to quickly build modularized, object-oriented programs.
-- **[Golang](https://go.dev/ "Opens Golang website")** - syntactically similar to C, Go is a statically typed, compiled programming language designed at Google.
+- **[Genesys Cloud CX](https://www.genesys.com/genesys-cloud "Goes to the Genesys Cloud CX page")** - A suite of Genesys cloud services for enterprise-grade communications, collaboration, and contact center management. You create and manage OAuth clients in Genesys Cloud.
+- **[Archy](https://developer.genesys.cloud/devapps/archy/ "Goes to the Welcome to Archy page")** - A Genesys Cloud command-line tool for building and managing Architect flows.
+- **[Terraform](https://www.terraform.io/ "Goes to the Terraform page")** - An open-source framework for managing cloud - and prem-based infrastructure services via a CLI.
+- **[CX as Code](https://developer.genesys.cloud/api/rest/CX-as-Code/ "Goes to the CX as Code page")** - A Genesys Cloud Terraform provider that provides a command-line interface for declaring core Genesys Cloud objects.
+- **[AWS Lambda](https://aws.amazon.com/lambda/ "Opens the AWS Lambda page")** - A serverless computing service for running code without creating or maintaining the underlying infrastructure.
+- **[AWS S3](https://aws.amazon.com/s3/ "Opens the AWS S3 page")** - Simple Storage Service, an object storage service in AWS.
+- **[Python](https://www.python.org/ "Opens the Python page")** - An interpreted, high-level programming language that is used to quickly build modularized, object-oriented programs.
+- **[Golang](https://go.dev/ "Goes to the Golang page")** - syntactically similar to C, Go is a statically typed, compiled programming language designed at Google.
 
 ## Prerequisites
 
@@ -41,7 +43,7 @@ This Genesys Cloud Developer Blueprint demonstrates how to save participant attr
 
 - A Genesys Cloud license. For more information, see [Genesys Cloud Pricing](https://www.genesys.com/pricing "Opens the Genesys Cloud pricing page") on the Genesys website.
 - Master Admin role. For more information, see [Roles and permissions overview](https://help.mypurecloud.com/?p=24360 "Opens the Roles and permissions overview article") in the Genesys Cloud Resource Center.
-- Archy (the latest version) Archy is Genesys Cloud's command line to deploy Genesys Cloud Architect Flows. For more information, see the following resources for Archy [Welcome to Archy](https://developer.genesys.cloud/devapps/archy/ "Goes to the Welcome to Archy page").
+- Archy (the latest version) Archy is Genesys Cloud's command line to deploy Genesys Cloud Architect Flows. For more information, see [Welcome to Archy](https://developer.genesys.cloud/devapps/archy/ "Goes to the Welcome to Archy page").
 - CX as Code. For more information, see [CX as Code](https://developer.genesys.cloud/api/rest/CX-as-Code/ "Opens the CX as Code page") in the Genesys Cloud Developer Center.
 
 ### AWS user account
@@ -50,15 +52,15 @@ This Genesys Cloud Developer Blueprint demonstrates how to save participant attr
   - AWS Identity and Access Management (IAM)
   - AWS Lambda
   - AWS S3
-- AWS credentials. For more information about setting up your AWS credentials on your local machine, see [About credential providers](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html "Opens The shared config and credentials files") in AWS documentation.
+- AWS credentials. For more information setting up your AWS credentials on your local machine, see [Configuration](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html "Goes to the COnfiguration page") on the AWS website.
 
 ### Third-party software
 
-- Terraform. For more information, see [Download Terraform](https://www.terraform.io/downloads) on the Terraform website.
+- Terraform. For more information, see [Download Terraform](https://www.terraform.io/downloads "Goes to the DOwnload Terraform page") on the Terraform website.
 
-- Python version 3.8.10 or later. For more information, see [Download Python](https://www.python.org/downloads/) on the Python website.
+- Python version 3.8.10 or later. For more information, see [Download Python](https://www.python.org/downloads/ "Goes to the Download Python page" ) on the Python website.
 
-- Golang version go1.16 or later. For more information, see [Download GO](https://go.dev/dl/) on the Go website.
+- Golang version go1.16 or later. For more information, see [Download GO](https://go.dev/dl/ "Goes to the Download GO page") on the Go website.
 
 ## Implementation steps
 
@@ -76,11 +78,11 @@ Clone the [process-participant-attributes-event-triggers-blueprint](https://gith
 
 ### Create a role for administering Process Automation Triggers
 
-In Genesys Cloud, create a role that includes the `processautomation > trigger > All Permissions` permission. Assign this role to yourself so you can assign it to a client in the next step.
+In Genesys Cloud, create a role that includes the following permission: `processautomation > trigger > All Permissions`. Assign this role to yourself so you can assign it to a client in the next step.
 
 ### Create an OAuth Client Credentials Token in Genesys Cloud
 
-1. Use the settings below to create an OAuth client:
+1. Use the settings in the next step to create an OAuth client:
 
 - **Grant type**: Client Credentials
 - **Role**: Configure it to use the role created in the previous step
@@ -91,55 +93,64 @@ For more information, see [Create an OAuth client](https://help.mypurecloud.com/
 
 ### Define the environment variables
 
-- **GENESYSCLOUD_OAUTHCLIENT_ID**: This is the Genesys Cloud client credential grant id that CX as Code executes against. The client id from the previous step goes here.
-- **GENESYSCLOUD_OAUTHCLIENT_SECRET**: This is the Genesys Cloud client credential secret that CX as Code executes against. The client secret from the previous step goes here.
-- **GENESYSCLOUD_REGION**: This is the Genesys Cloud region in which your organization is located. i.e., us-east-1
-- **GENESYSCLOUD_ENVIRONMENT**: This is where your organization is hosted i.e., mypurecloud.com
-- **AWS_ACCESS_KEY_ID**: This is the Id that identifies your AWS account
-- **AWS_SECRET_ACCESS_KEY**: This is the AWS secret that authorizes executions.
+- **GENESYSCLOUD_OAUTHCLIENT_ID**: This is the Genesys Cloud client credential grant id that CX as Code executes against.
+- **GENESYSCLOUD_OAUTHCLIENT_SECRET**: This is the Genesys Cloud client credential secret that CX as Code executes against.
+- **GENESYSCLOUD_REGION**: This is the Genesys Cloud region in your organization (i.e., us-east-1).
+- **GENESYSCLOUD_ENVIRONMENT**: This is where your organization is hosted (i.e., mypurecloud.com).
+- **AWS_ACCESS_KEY_ID**: This is the AWS Access Key you must set up in your Amazon account to allow the AWS Terraform provider to act against your account.
+- **AWS_SECRET_ACCESS_KEY**: This is the AWS Secret you must set up in your Amazon account to allow the AWS Terraform provider to act against your account.
 
+:::primary
 **Note:** For this project, the Genesys Cloud OAuth Client was given the master admin role.
+:::
 
 ### Define Terraform variables
 
-In the `terraform` directory, open the `variables.auto.tfvars` and edit the variables to match your preferred configuration.
+You must define several values that are specific to your AWS region and Genesys Cloud organization.
 
-- `environment`: This is a free-form field that will be combined with the prefix value to define the name of various AWS and Genesys Cloud artifacts. For example, if you set the environment name as `dev` and a lambda prefix as `saveDataLambda`, your AWS Lambda, IAM roles (relating to the lambda), Genesys Cloud Integration, and Data Actions will all begin with `dev-saveDataLambda`.
-- `organizationId`: Your Genesys Cloud organization id.
-- `aws_region` : The AWS region (e.g., us-east-1, us-west-2) where you will deploy the target Lambda.
-- `saveData_prefix`: This is a free-form field that will be combined with the environmental value to define the name of various AWS and Genesys Cloud resources about this particular lambda.
-- `generatePaymentId_prefix`: This is a free-form field that will be combined with the environmental value to define the name of various AWS and Genesys Cloud resources about this particular lambda.
-- `bucket_name`: Preferred name of the s3 bucket. Make sure the bucket name is [valid](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
+In the blueprint/terraform/variables.auto.tfvars file, set the following values? 
+
+- `environment`: This is a free-form field that will be combined with the prefix value to define the name of various AWS and Genesys Cloud resources. For example, if you set the environment name as `dev` and a lambda prefix as `saveDataLambda`, your AWS Lambda, IAM roles, Genesys Cloud Integration, and Data Actions will all begin with `dev-saveDataLambda`.
+- `organizationId`: Your Genesys Cloud organization ID.
+- `aws_region` : The AWS region (e.g., us-east-1, us-west-2) where you are going to deploy the target Lambda.
+- `saveData_prefix`: This is a free-form field that combines with the environmental value to define the name of various AWS and Genesys Cloud resources.
+- `generatePaymentId_prefix`: This is a free-form field that combines with the environmental value to define the name of various AWS and Genesys Cloud resources.
+- `bucket_name`: Preferred name of the s3 bucket. Make sure the bucket name is [valid](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html "Opens the Bucket naming rules page").
 - `bucket_tag`: Tag to assign to s3 bucket.
 - `IVR_start_number`: Starting phone number of the DID Pool range.
 - `IVR_end_number`: Ending phone number of the DID Pool range.
 
-**Note:** Both `IVR_start_number` and `IVR_end_number` should be the same number if you want to use only one phone number for testing. The number entered should be a phone number you (or your organization) own and you want to associate with the IVR.
+:::primary
+**Note:** The `IVR_start_number` and `IVR_end_number` should be the same if you want to use only one phone number for testing. The number entered should be a phone number you (or your organization) own and you want to associate with the IVR.
 
 If you have an existing DID pool range you want to use, open the `telephony.tf` file and comment out the `genesyscloud_telephony_providers_edges_did_pool` resource. Proceed to comment out the `depends_on` property in the `genesyscloud_architect_ivr` resource and save your changes.
+:::
 
 ### Deploy the infrastructure
 
-Open a terminal window and set the working directory to the `terraform` directory in the cloned repo, and run the following:
+1. To run this project using AWS the Terraform provider, open a terminal window and set the working directory to the `terraform` directory, and run the following command:
 
 ```bash
 terraform init
 terraform apply --auto-approve
 ```
 
-This should create and deploy the infrastructure. This includes three flows (an inbound call flow, a secure flow, and a workflow), two lambdas (including the roles and policies that come with them), data integrations, and data actions for the lambdas. After everything is set up, a python script located in `blueprint/terraform/workflow_trigger` gets called with the id of the workflow. This is a crucial part of the infrastructure because the script subscribes (with your `workflowId`) to a Notification topic that allows the workflow to be called when a call disconnects in your system.
+This creates and deploys the infrastructure, which includes three flows:
+ (an inbound call flow, a secure flow, and a workflow), two lambdas (including the roles and policies), data integrations, and data actions. 
+ 
+ After everything is set up, a python script in `blueprint/terraform/workflow_trigger` is called with the ID of the workflow. This is a crucial part of the infrastructure because the script subscribes (with your `workflowId`) to a Notification topic that allows the workflow to be called when a call disconnects in your system.
 
 ### Building Golang Lambda
 
-This blueprint comes with prebuilt go lambdas. The command to build golang lambda for AWS is `GOOS=linux GOARCH=amd64 go build -o <binary-destination>`. If you decide to make any changes to the lambda code or even replace the whole thing, the code has to be built before deploying. For example, if you make changes to `blueprint/lambda-paymentIdGenerator/cmd/main.go`, you have to open the terminal and set the working directory to `blueprint/lambda-paymentIdGenerator/cmd` and run the following command:
+This blueprint includes prebuilt Go Lambdas. The command to build Golang Lambda for AWS is `GOOS=linux GOARCH=amd64 go build -o <binary-destination>`. If you decide to change or replace the Lambda code, the code has to be built before deployment. For example, if you make changes to `blueprint/lambda-paymentIdGenerator/cmd/main.go`, you have to open the terminal and set the working directory to `blueprint/lambda-paymentIdGenerator/cmd` and run the following command:
 
 ```bash
 GOOS=linux GOARCH=amd64 go build -o ../bin/main
 ```
 
-## Test your Setup
+## Test your setup
 
-Dial the phone number you entered in the `blueprint/src/terraform/variables.auto.tfvars` file. You should hear the IVR pick up and answer with "Welcome to cloud store" if everything is deployed correctly. Follow the instructions, and you should be able to see your phone number and a randomly generated payment id saved in your deployed s3 bucket when the call ends.
+Dial the number you entered in the `blueprint/src/terraform/variables.auto.tfvars` file. Once the IVR picks up, you should hear the following response of **Welcome to the cloud store**. If you receive this response, the setup has been deployed correctly. When the call ends, you should see your phone number and a randomly generated payment ID saved in your deployed s3 bucket.
 
 ## Additional resources
 
