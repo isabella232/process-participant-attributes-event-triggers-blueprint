@@ -1,5 +1,9 @@
-# Process Participant Attributes using Event Triggers(DRAFT)
+# Use triggers to process participant attributes
 
-This Genesys Cloud Developer blueprint demonstrates how to optimize call flows using the new trigger feature to execute a workflow whenever a call disconnects in your organization. The workflow then processes the participant data stored during the call.
+View the [Use triggers to process participant attributes](https://github.com/GenesysCloudBlueprints/process-participant-attributes-event-triggers-blueprint "Use triggers to process participant attributes"). 
 
-![Deploy a Process Automation Triggers setup](blueprint/images/flowchart.png "Deploy a Process Automation Triggers setup")
+This Genesys Cloud Developer Blueprint demonstrates how to optimize call flows using the new trigger feature to execute a workflow whenever a call disconnects in your organization. The workflow then processes the participant data stored during the call.
+
+You can view the complete blueprint and download the sample files from [here](https://github.com/GenesysCloudBlueprints/process-participant-attributes-event-triggers-blueprint "Use triggers to process participant attributes").
+
+![Flowchart](blueprint/images/flowchart.png "Flowchart")
