@@ -11,9 +11,9 @@ This Genesys Cloud Developer Blueprint demonstrates how to optimize call flows u
 
 This Genesys Cloud Developer Blueprint demonstrates how to optimize call flows using the new trigger feature to execute a workflow whenever a call disconnects in your organization. The workflow then processes the participant data stored during the call.
 
-![flowchart](images/flowchart.png "flowchart")
+![Flowchart](images/flowchart.png "Flowchart")
 
-:::primary:**NOTE**: `Process Automation Triggers` is currently in beta. Please ensure that you have the required access before you proceed. To gain access to this feature you should contact your CSM/TAM or contact Richard Schott at richard.schott@genesys.com.
+:::primary:**NOTE**: `Process Automation Triggers` is currently in beta. Please ensure that you have the required access before you proceed. To gain access to this feature you should contact your CSM/TAM or Richard Schott at richard.schott@genesys.com.
 :::
 
 ## Scenario
@@ -36,7 +36,7 @@ This Genesys Cloud Develop Blueprint demonstrates how to use event triggers to s
 ### Specialized knowledge
 
 - Administrator-level knowledge of Genesys Cloud
-- AWS Cloud Practitioner-level knowledge of AWS IAM, Amazon Comprehend, Amazon API Gateway, AWS Lambda, AWS SDK for JavaScript, and the AWS CLI 
+- AWS Cloud Practitioner-level knowledge of AWS IAM, AWS Lambda, and AWS S3
 - Experience with Terraform
 
 ### Genesys Cloud account
@@ -81,12 +81,30 @@ In Genesys Cloud, create a role that includes the following permission: `process
 
 ### Create an OAuth Client Credentials Token in Genesys Cloud
 
-1. Use the settings in the next step to create an OAuth client:
+Step to create an OAuth client:
 
-- **Grant type**: Client Credentials
-- **Role**: Configure it to use the role created in the previous step
+1. Click **Admin**.
+2. Under **Integrations**, click **OAuth**.
+3. Click **Add client**. The Client Details tab appears.
+4. Set **App Name** to a descriptive name of the app.
+5. (Optional) Type a brief description of the app in the Description box.
+6. Next, set the duration of time until tokens created with this client expire. Accept the default duration, or enter a value between 300 and 172800 seconds. This sets the lifetime of the token to a maximum of 2 days or less.
+7. Make a selection below **Grant Types**. rant Types set the way an application gets an access token.
+- [Client Credential Grant](https://developer.genesys.cloud/authorization/platform-auth/use-client-credentials): A single-step authentication process exclusively for use by non-user applications (e.g. a Windows Service or cron job). The client application provides OAuth client credentials in exchange for an access token. This authorization type is not in the context of a user and therefore will not be able to access user-specific APIs (e.g GET /v2/users/me).
 
-2. For the next step, use the client ID and client secret.
+8. Supply parameters required by the grant type.
+
+- **Roles**:  If you selected Client Credentials, click the Roles tab. This opens a list of roles to choose from. Assign a minimum set of roles to determine what your OAuth client integration can do.
+
+:::primary
+**Note**: To grant roles to an OAuth client, you must have those roles assigned to your profile.
+:::
+
+You must also associate each role with a division. Determine what divisions should be associated with roles for the Client Credential Grant. All Client Credential grant roles are scoped to the Home Division by default. Update with appropriate divisions so that the applications and systems which use those grants can access the appropriate data. If a client credential grant is supplied by a 3rd party, check with the 3rd party to understand the use of the grant and update the divisions for the roles appropriately. No other grant types are affected by access control.
+
+9. Click **Save**. Genesys Cloud creates a Client ID and a Client Secret (token).
+
+Your Genesys Cloud OAuth client is now ready to use.
 
 For more information, see [Create an OAuth client](https://help.mypurecloud.com/?p=188023 "Goes to the Create an OAuth client article") in the Genesys Cloud Resource Center.
 
@@ -137,7 +155,7 @@ terraform apply --auto-approve
 The infrastructure includes:
  - (an inbound call flow, a secure flow, and a workflow), two Lambdas (including the roles and policies), data integrations, and data actions. 
  
- After everything is set up, a Python script in `blueprint/terraform/workflow_trigger` is called with the ID of the workflow. This is a crucial part of the infrastructure because the script subscribes (with your `workflowId`) to a Notification topic that allows the workflow to be called when a call disconnects in your system.
+ The Python script in `blueprint/terraform/workflow_trigger` is called with the ID of the workflow. This is a crucial part of the infrastructure because the script subscribes to a Notification topic (with your `workflowId`) that allows the workflow to be called when a call is disconnected.
 
 ### Build the Golang Lambda
 
