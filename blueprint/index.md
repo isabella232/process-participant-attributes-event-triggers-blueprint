@@ -6,7 +6,7 @@ icon: blueprint
 image: images/flowchart.png
 category: 6
 summary: |
-This Genesys Cloud Developer Blueprint demonstrates how to optimize call flows using the new trigger feature to execute a workflow whenever a call disconnects in your organization. The workflow then processes the participant data stored during the call.
+  This Genesys Cloud Developer Blueprint demonstrates how to optimize call flows using the new trigger feature to execute a workflow whenever a call disconnects in your organization. The workflow then processes the participant data stored during the call.
 ---
 
 This Genesys Cloud Developer Blueprint demonstrates how to optimize call flows using the new trigger feature to execute a workflow whenever a call disconnects in your organization. The workflow then processes the participant data stored during the call.
